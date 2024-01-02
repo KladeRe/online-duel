@@ -6,6 +6,7 @@
 #include <sys/socket.h> 
 #include <unistd.h> 
 #include "position.h"
+#include <arpa/inet.h>
 
 int main()
 {
@@ -40,7 +41,7 @@ int main()
     sockaddr_in serverAddress; 
     serverAddress.sin_family = AF_INET; 
     serverAddress.sin_port = htons(8080); 
-    serverAddress.sin_addr.s_addr = INADDR_ANY; 
+    serverAddress.sin_addr.s_addr = inet_addr("192.168.68.114"); 
   
     // sending connection request 
     connect(clientSocket, (struct sockaddr*)&serverAddress, 
